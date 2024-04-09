@@ -74,7 +74,7 @@ LIB_SRCS = \
     lsh512_avx.cpp lsh512_sse.cpp luc.cpp mars.cpp marss.cpp md2.cpp md4.cpp \
     md5.cpp misc.cpp modes.cpp mqueue.cpp mqv.cpp nbtheory.cpp oaep.cpp \
     osrng.cpp padlkrng.cpp panama.cpp pkcspad.cpp poly1305.cpp polynomi.cpp \
-    pssr.cpp pubkey.cpp queue.cpp rabbit.cpp rabin.cpp randpool.cpp rc2.cpp \
+    primetab.cpp pssr.cpp pubkey.cpp queue.cpp rabbit.cpp rabin.cpp randpool.cpp rc2.cpp \
     rc5.cpp rc6.cpp rdrand.cpp rdtables.cpp rijndael.cpp rijndael_simd.cpp \
     ripemd.cpp rng.cpp rsa.cpp rw.cpp safer.cpp salsa.cpp scrypt.cpp \
     seal.cpp seed.cpp serpent.cpp sha.cpp sha3.cpp sha_simd.cpp shacal2.cpp \
@@ -105,7 +105,7 @@ LIB_OBJS = \
     lsh512_avx.obj lsh512_sse.obj luc.obj mars.obj marss.obj md2.obj md4.obj \
     md5.obj misc.obj modes.obj mqueue.obj mqv.obj nbtheory.obj oaep.obj \
     osrng.obj padlkrng.obj panama.obj pkcspad.obj poly1305.obj polynomi.obj \
-    pssr.obj pubkey.obj queue.obj rabbit.obj rabin.obj randpool.obj rc2.obj \
+    primetab.obj pssr.obj pubkey.obj queue.obj rabbit.obj rabin.obj randpool.obj rc2.obj \
     rc5.obj rc6.obj rdrand.obj rdtables.obj rijndael.obj rijndael_simd.obj \
     ripemd.obj rng.obj rsa.obj rw.obj safer.obj salsa.obj scrypt.obj \
     seal.obj seed.obj serpent.obj sha.obj sha3.obj sha_simd.obj shacal2.obj \
@@ -221,7 +221,7 @@ RDSEED_OBJ = rdseed-x64.obj
 
 !IF "$(PLATFORM)" == "ARM" || "$(PLATFORM)" == "arm" || "$(PLATFORM)" == "ARM64" || "$(PLATFORM)" == "arm64"
 # CXXFLAGS = $(CXXFLAGS) /D_ARM_WINAPI_PARTITION_DESKTOP_SDK_AVAILABLE=1 /DWINAPI_FAMILY=WINAPI_FAMILY_DESKTOP_APP
-CXXFLAGS = $(CXXFLAGS) /DWINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP
+# CXXFLAGS = $(CXXFLAGS) /DWINAPI_FAMILY=WINAPI_FAMILY_PHONE_APP
 LIB_SRCS = $(LIB_SRCS) neon_simd.cpp
 LIB_OBJS = $(LIB_OBJS) neon_simd.obj
 # CXXFLAGS = $(CXXFLAGS) /DWINAPI_FAMILY=WINAPI_FAMILY_APP
