@@ -153,14 +153,24 @@ LDFLAGS = /nologo /SUBSYSTEM:CONSOLE /DEBUG
 ARFLAGS = /nologo
 LDLIBS =
 
+!IF "$(BUILD_TYPE)" == "debug"
+
 # Compiler debug build.
-# CXXFLAGS = $(CXXFLAGS) /DDEBUG /D_DEBUG /Oi /Oy- /Od /MTd
+CXXFLAGS = $(CXXFLAGS) /DDEBUG /D_DEBUG /Oi /Oy- /Od /MTd
+# Linker debug build.
+LDFLAGS = $(LDFLAGS) /DEBUG
+
+!ELSEIF "$(BUILD_TYPE)" == "release"
+
 # Compiler release build.
 CXXFLAGS = $(CXXFLAGS) /DNDEBUG /D_NDEBUG /Oi /Oy /O2 /MT
-# Linker debug build.
-# LDFLAGS = $(LDFLAGS) /DEBUG
 # Linker release build.
 LDFLAGS = $(LDFLAGS) /DEBUG /OPT:REF
+
+!ELSE
+!ERROR "Please specify /E BUILD_TYPE=[release, debug]"
+!ENDIF
+
 
 # Attempt to detect when <sdkddkver.h> and <winapifamily.h> are available
 #   http://stackoverflow.com/q/40577415 ?
